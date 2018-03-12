@@ -59,7 +59,7 @@ bool Twiddle::EstimatingError(double err, double velocity, bool &reset)
 	if (qVelo.size() > 5)
 	{
 		double sv = 0.0;
-		for (int i =0; i < qVelo.size(); i++) sv += qVelo[i];
+		for (int i =0; i < (int) qVelo.size(); i++) sv += qVelo[i];
 		sv /= qVelo.size();
 		if (sv < 0.02)
 		{
@@ -136,7 +136,7 @@ bool Twiddle::Update(double err, double velocity, bool &reset)
 			// Advance to next parameter
 			// Iterating over the number of parameters
 			n_cur++; // n_curr is the current parameter 
-			if (n_cur == vParams_.size())
+			if (n_cur == (int) vParams_.size())
 			{
 				// Looped over all parameters
 				// so check if we are done
@@ -194,7 +194,7 @@ bool Twiddle::Update(double err, double velocity, bool &reset)
 		// Advance to next parameter
 		// Iterating over the number of parameters
 		n_cur++; // n_curr is the current parameter 
-		if (n_cur == vParams_.size())
+		if (n_cur == (int) vParams_.size())
 		{
 			// Looped over all parameters
 			// so check if we are done
@@ -236,7 +236,7 @@ void Twiddle::SaveToFile()
 
 	string fname = "./optimzer_results.txt";
 	fstream outf(fname.c_str());
-	for (int i = 0; i < this->bestParams_.size(); i++)
+	for (int i = 0; i < (int) this->bestParams_.size(); i++)
 	{
 		outf << bestParams_[i] << ", " << endl;
 	}
