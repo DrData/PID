@@ -82,7 +82,7 @@ Visual aids are encouraged, i.e. record of a small video of the car in the simul
 
 We started with manual tuning to try to get the car around the track once.
 
-    * We start primarily with PD terms as show from above. The derivative term was crucial in keeping the oscillations down. I switched between the P and D terms to get the car around one lap. While P caused oscillations, it was needed to get the car to make a big enough adjustment to get to centerline. The D term was then adjusted to reduce oscillations.
+    * We start primarily with PD terms as show from above. The derivative term was crucial in keeping the oscillations down. I switched between the P and D terms to get the car around one lap. While P caused oscillations, it was needed to get the car to make a big enough adjustment to get to centerline. The D term was then adjusted to reduce oscillations. The selected manual parameters were: 0.1 .00135 2.1 at a throttle of 0.3
 
     * Automatic adjustment with Twiddle was attempted, but it didn't really improve the manual parameters by much.
     Below is video of the Twiddle optimization. It runs for some predetermined number of steps to estimate the error and then it is reset by issuing a 'reset' message command to the simulator.
@@ -96,7 +96,16 @@ We started with manual tuning to try to get the car around the track once.
   
   I tried to speed up the iterations by stop iterations that either had near zero velcitiy or had crosstrack error greater than 6.5 m, which is off track.
   
-    
+To run pid with optimization:
+Linux:
+./pid 0.1 .00135 2.1 1.0 1.0 .001 1.0
+Windows:
+pid.exe 0.1 .00135 2.1 1.0 1.0 .001 1.0
+
+The arguments are:
+Kp Ki Kd Throttle dKp dKi dKd
+where the latter 3 are the initial deltas used in Twiddle.
+
 ### Simulation
 1. The vehicle must successfully drive a lap around the track.
 
@@ -105,4 +114,10 @@ Here is a video with a manually tuned PID:
 
 
 ![One Lap - Manually tuned PID](./images/run_final.mp4)
+
+To run:
+pid.exe 
+or
+pid.exe 0.1 0.00135 2.1 0.3
+
 
