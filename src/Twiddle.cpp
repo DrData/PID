@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Twiddle::Twiddle() : nAvg_(0), avg_err_(0.0)
-, nSteps_(650), current_state_(eOpt_INIT), pvParams_(NULL)
-, vdp_(std::vector<double>()), is_optimizing_(false), nBurnIn_(0),
-is_initialized_(false), debug_(false), nitr(0)
+Twiddle::Twiddle() : nitr(0), debug_(false), is_optimizing_(false)
+, avg_err_(0.0), nSteps_(650), nAvg_(0), nBurnIn_(0),
+is_initialized_(false), current_state_(eOpt_INIT), pvParams_(NULL)
+, vdp_(std::vector<double>())
 {
 }
 
