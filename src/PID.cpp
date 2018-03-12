@@ -3,8 +3,9 @@
 #include <iostream>
 using namespace std;
 
-PID::PID() : Kp(1.0), Ki(0.001), Kd(.5), i_error(0.0),
-p_error(0.0), d_error(0){}
+PID::PID() : p_error(0.0), i_error(0.0),
+d_error(0), Kp(1.0), Ki(0.001), Kd(.5)
+{}
 
 PID::~PID() {}
 
