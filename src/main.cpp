@@ -4,7 +4,9 @@
 #include "PID.h"
 #include <math.h>
 
+#ifdef WIN32
 #define M_PI 3.141592653589793238
+#endif
 
 // for convenience
 using json = nlohmann::json;
